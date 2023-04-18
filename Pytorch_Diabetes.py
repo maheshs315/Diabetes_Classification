@@ -49,17 +49,17 @@ print(x_train.head())
 class classification_model(nn.Module):
     def __init__(self,input_dim):
         super(classification_model,self).__init__()
-        self.l1=nn.Linear(input_dim,8)
-        self.r1=nn.ReLU()
-        self.l2=nn.Linear(8,1)
+        self.l1=nn.Linear(input_dim,1)
+        #self.r1=nn.ReLU()
+        #self.l2=nn.Linear(8,1)
         #self.r2=nn.ReLU()
         #self.l3=nn.Linear(8,1)
         self.r3=nn.Sigmoid()
     
     def forward(self,x):
         out=self.l1(x)
-        out=self.r1(out)
-        out=self.l2(out)
+        #out=self.r1(out)
+        #out=self.l2(out)
         #out=self.r2(out)
         #out=self.l3(out)
         out=self.r3(out)
@@ -78,7 +78,7 @@ from torch.utils.data import TensorDataset
 from torch.utils.data import DataLoader
 
 dataset_train = TensorDataset(x_tensor, y_tensor)
-train_loader = DataLoader(dataset=dataset_train, batch_size=100)
+train_loader = DataLoader(dataset=dataset_train, batch_size=5000)
 
 
 
@@ -93,8 +93,8 @@ for i in model.parameters():
 
 #loss and optim
 loss1=nn.BCELoss()
-optim1=torch.optim.SGD(model.parameters(),lr=1e-4)
-n_epochs=300
+optim1=torch.optim.Adam(model.parameters(),lr=1e-2)
+n_epochs=100
 #training loop
 
 
