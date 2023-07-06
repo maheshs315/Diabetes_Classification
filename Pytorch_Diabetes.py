@@ -93,7 +93,7 @@ for i in model.parameters():
 
 #loss and optim
 loss1=nn.BCELoss()
-optim1=torch.optim.Adam(model.parameters(),lr=1e-2)
+optim1=torch.optim.Adam(model.parameters(),lr=1e-3)
 n_epochs=100
 #training loop
 
